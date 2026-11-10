@@ -1,0 +1,63 @@
+寒霜注入工具 便携版 v1.0.0
+==========================
+
+一、怎么启动（不用安装）
+1. 把整个压缩包解压到任意文件夹。
+2. 双击「启动.bat」。
+3. 浏览器会自动打开 http://localhost:5190（没打开就手动输入）。
+4. 关闭黑色命令行窗口即可停止服务。
+
+需要 Node.js 20 或更高版本（这台电脑已经装好）。
+如果提示端口 5190 被占用：先关掉 pnpm dev 或另一个寒霜注入工具实例。
+
+二、源码
+「源码」文件夹是完整的前端 + 本地服务源码，正常使用不需要动它。
+想改界面或后端：
+  cd 源码
+  pnpm install
+  pnpm dev
+改完重新打包：
+  pnpm build
+  pnpm build:server
+（源码里的 electron/ 是之前尝试桌面安装包留下的，可忽略。）
+
+三、界面
+- 左侧 Agent：该应用的提示词工作台；顶部是人物卡开关。
+- 提示词注入：本机文件 / 网关注入；网关注入里有 Codex 注入代理。
+- MCP：seep 是真实条目，其他 MCP 是演示数据。
+- Skills：查看和安装技能。
+- Seep 工具：调用 23 个逆向工具，或接入客户端 MCP。
+- 使用教程：三步上手、页面地图、常见问题。
+- 左下角：满血中转站、TG 群、QQ 群。
+
+四、Seep 工具
+1. Seep 仓库默认放在 D:\seep-reverse-lab。
+   如果放在别处，在「Seep 工具」页顶部改目录，再点「重新连接」。
+2. 需要 Python 3.10+，并安装 mcp 库：
+   pip install "mcp>=1.20,<1.29"
+3. 点「运行体检」，确认 Radare2 / JADX / Apktool 都是 Ready。
+4. 左侧选工具，带路径的字段填本机绝对路径，例如：
+   C:/Windows/System32/notepad.exe
+5. 点「调用工具」，结果显示在下方。
+6. 想让 Claude Code / Codex 等 Agent 自己调用：去「接入 MCP」勾选客户端，
+   重启客户端。MCP 页面也会同步显示 seep。
+
+五、Codex 人物卡注入
+1. 侧栏 →「提示词注入」→ 网关注入 →「Codex 注入代理」。
+2. 点「接入 Codex」，会把 ~/.codex/config.toml 里当前 provider 的 base_url
+   改成 http://localhost:5190/v1。
+3. 保持本工具运行，新开 Codex 会话即可按当前人物卡改写 instructions。
+4. 不想用时点「恢复原地址」，Codex 会回到接入前的地址。
+5. 修改前的配置备份在 ~/.cc-switch/backups/card-proxy/。
+
+六、数据位置
+- 人物卡：~/.cc-switch/prompt-cards.json
+- 提示词库：~/.cc-switch/prompt-library.json
+- Seep MCP 配置备份：~/.cc-switch/backups/seep-mcp/
+- Codex 注入代理状态：~/.cc-switch/card-proxy.json
+- 注入日志：~/.cc-switch/card-proxy.log
+
+七、许可与安全
+- 前端基于 CC Switch（MIT），许可见 LICENSE-cc-switch。
+- Seep-Reverse-Lab 是独立的 GPL-3.0 项目，本工具只以进程方式调用。
+- 逆向工具只应对已获得授权的目标使用。

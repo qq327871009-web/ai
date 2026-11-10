@@ -1,0 +1,4 @@
+@echo off
+chcp 65001 >nul
+title 独行刀客破甲 · 自检
+call "%~dp0_launch.bat" verify

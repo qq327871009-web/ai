@@ -1,0 +1,4 @@
+开源版适配最新dsh版本，请使用官方渠道或者干净api
+反代work等其他渠道有可能被审查不显示回答
+闭源全套主流agent codex claude trae 豆包 zcode antigravity workbuddy codebuddy harmes网络安全逆向教学课程及配套插件，仅作学习交流
+所有插件工具禁止违法犯罪行为，造成后果与我无关。

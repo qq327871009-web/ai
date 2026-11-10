@@ -1,0 +1,16 @@
+{
+  "name": "laozhang-magicbook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "老张魔法书 —— DSH agent preset bundle carrying the 老张 persona（NB / 破甲内测）plus the full tool roster.",
+  "type": "module",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dshTarget": "0.2.0-rc.2"
+}
